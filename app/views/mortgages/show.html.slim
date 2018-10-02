@@ -1,0 +1,52 @@
+h1.page-header Mortgage Calculator
+
+= form_tag :mortgage, method: :post, js: true do
+  .form-group.row
+    = label_tag :asking_price, 'Asking Price', class: 'col-sm-3 col-form-label'
+    .col-sm-3
+      = text_field_tag :asking_price, nil, class: 'form-control', required: true, value: 193000
+
+  .form-group.row
+    = label_tag :down_payment_amount, 'Down Payment', class: 'col-sm-3 col-form-label'
+    .col-sm-3
+      = text_field_tag :down_payment_amount, 0, class: 'form-control', required: true
+    .col-sm-1.text-center
+      | =
+    .col-sm-3
+      .input-group
+        = text_field_tag :down_payment_percent, 5, class: 'form-control', required: true, min: 5, value: 20
+        .input-group-append
+          .input-group-text %
+
+  .form-group.row
+    = label_tag :cmhc_amount, 'Mortgage insurance', class: 'col-sm-3 col-form-label'
+    .col-sm-3
+      = text_field_tag :cmhc_amount, 0, readonly: true, class: 'form-control', disabled: true
+
+  .form-group.row
+    = label_tag :mortgage_amount, 'Mortgage Amount', class: 'col-sm-3 col-form-label'
+    .col-sm-3
+      = text_field_tag :mortgage_amount, 0, readonly: true, class: 'form-control', disabled: true
+
+  hr
+
+  .form-group.row
+    = label_tag :amortization, 'Amortization period', class: 'col-sm-3 col-form-label'
+    .col-sm-3
+      .input-group
+        = text_field_tag :amortization, 5, class: 'form-control', required: true, value: 27, type: 'number'
+        .input-group-append
+          .input-group-text years
+
+  .form-group.row
+    = label_tag :interest_rate, 'Intereset Rate', class: 'col-sm-3 col-form-label'
+    .col-sm-3
+      .input-group
+        = text_field_tag :interest_rate, nil, class: 'form-control', required: true, type: 'number', step: '0.01', value: 3.75
+        .input-group-append
+          .input-group-text %
+
+  .form-group.row
+    = label_tag :monthly_payment, 'Monthly Payment', class: 'col-sm-3 col-form-label'
+    .col-sm-3
+      = text_field_tag :monthly_payment, 0, readonly: true, class: 'form-control', disabled: true
